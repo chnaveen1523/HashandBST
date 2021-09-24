@@ -10,21 +10,16 @@ namespace HashTableandBST.cs
     {
         static void Main(string[] args)
         {
-            BinarySearchTree<int> binarySearch = new BinarySearchTree<int>(56);
-            binarySearch.Insert(30);
-            binarySearch.Insert(70);
-            binarySearch.Insert(22);
-            binarySearch.Insert(40);
-            binarySearch.Insert(60);
-            binarySearch.Insert(95);
-            binarySearch.Insert(11);
-            binarySearch.Insert(65);
-            binarySearch.Insert(3);
-            binarySearch.Insert(16);
-            binarySearch.Insert(63);
-            binarySearch.Insert(67);
-            binarySearch.Display();
-            Console.WriteLine(binarySearch.Search(67, binarySearch));
+            MyMapNode<string, string> myMapNode = new MyMapNode<string, string>(6);
+            myMapNode.Add("1", "To");
+            myMapNode.Add("2", "be");
+            myMapNode.Add("3", "or");
+            myMapNode.Add("4", "not");
+            myMapNode.Add("5", "to");
+            myMapNode.Add("6", "be");
+            //Console.WriteLine("Getting values by using {0}:{1}","4",myMapNode.Get("4"));
+            myMapNode.Display();
+            Console.WriteLine(myMapNode.CountFrequency("be"));
             Console.ReadLine();
         }
     }
