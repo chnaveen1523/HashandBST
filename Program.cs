@@ -6,61 +6,26 @@ using System.Threading.Tasks;
 
 namespace HashTableandBST.cs
 {
-    class BinarySearchTree<T> where T : IComparable<T>
+    class Program
     {
-        public T RootNode { get; set; }
-        public BinarySearchTree<T> LeftTree { get; set; }
-        public BinarySearchTree<T> RightTree { get; set; }
-        public BinarySearchTree(T RootNode)
+        static void Main(string[] args)
         {
-            this.RootNode = RootNode;
-            this.LeftTree = null;
-            this.RightTree = null;
-        }
-
-        int leftCount = 0, rightCount = 0;
-        bool result = false;
-
-        public void Insert(T item)
-        {
-            T currentNodeValue = this.RootNode;
-            if ((currentNodeValue.CompareTo(item)) > 0)
-            {
-                if (this.LeftTree == null)
-                {
-                    this.LeftTree = new BinarySearchTree<T>(item);
-                }
-                else
-                {
-                    this.LeftTree.Insert(item);
-                }
-            }
-            else
-            {
-                if (this.RightTree == null)
-                {
-                    this.RightTree = new BinarySearchTree<T>(item);
-                }
-                else
-                {
-                    this.RightTree.Insert(item);
-                }
-            }
-        }
-
-        public void Display()
-        {
-            if (this.LeftTree != null)
-            {
-                this.leftCount++;
-                this.LeftTree.Display();
-            }
-            Console.WriteLine(this.RootNode.ToString());
-            if (this.RightTree != null)
-            {
-                this.rightCount++;
-                this.RightTree.Display();
-            }
+            BinarySearchTree<int> binarySearch = new BinarySearchTree<int>(56);
+            binarySearch.Insert(30);
+            binarySearch.Insert(70);
+            binarySearch.Insert(22);
+            binarySearch.Insert(40);
+            binarySearch.Insert(60);
+            binarySearch.Insert(95);
+            binarySearch.Insert(11);
+            binarySearch.Insert(65);
+            binarySearch.Insert(3);
+            binarySearch.Insert(16);
+            binarySearch.Insert(63);
+            binarySearch.Insert(67);
+            binarySearch.Display();
+            binarySearch.GetSize();
+            Console.ReadLine();
         }
     }
 }
