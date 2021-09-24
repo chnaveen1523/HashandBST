@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace HashTableandBST.cs
 {
     class BinarySearchTree<T> where T : IComparable<T>
-    {
+    {/// <summary>
+     /// UC3 for bst to search 63 of the binary search tree
+     /// </summary>
         public T RootNode { get; set; }
         public BinarySearchTree<T> LeftTree { get; set; }
         public BinarySearchTree<T> RightTree { get; set; }
@@ -18,9 +20,10 @@ namespace HashTableandBST.cs
             this.RightTree = null;
         }
 
-        int leftCount = 0, rightCount = 0;
+        public static int leftCount = 0, rightCount = 0;
         bool result = false;
 
+        //method for inserting element in binary search tree
         public void Insert(T item)
         {
             T currentNodeValue = this.RootNode;
@@ -48,17 +51,50 @@ namespace HashTableandBST.cs
             }
         }
 
+        //method to give size of the binary search tree
+        public void GetSize()
+        {
+            Console.WriteLine("The size of the tree is" + " " + (1 + leftCount + rightCount));
+        }
+
+        //method for search node in BST
+        public bool Search(T element, BinarySearchTree<T> node)
+        {
+            if (node == null)
+            {
+                return false;
+            }
+            if (node.RootNode.Equals(element))
+            {
+                Console.WriteLine("Found the element in BST" + " " + node.RootNode);
+                result = true;
+            }
+            //else
+            //{
+            //    Console.WriteLine("Current element in BST is {0}", node.RootNode);
+            //}
+            if (element.CompareTo(node.RootNode) < 0)
+            {
+                Search(element, node.LeftTree);
+            }
+            if (element.CompareTo(node.RootNode) > 0)
+            {
+                Search(element, node.RightTree);
+            }
+            return result;
+        }
+
         public void Display()
         {
             if (this.LeftTree != null)
             {
-                this.leftCount++;
+                leftCount++;
                 this.LeftTree.Display();
             }
             Console.WriteLine(this.RootNode.ToString());
             if (this.RightTree != null)
             {
-                this.rightCount++;
+                rightCount++;
                 this.RightTree.Display();
             }
         }
